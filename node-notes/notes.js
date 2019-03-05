@@ -6,12 +6,17 @@ var adresse = {
   ort: "Wien"
 };
 
-module.exports.add = function(x, y) {
-  return x + y;
+var add = (x, y) => x + y;
+var subtract = (x, y) => x - y;
+
+
+console.log('Ergebnis:', add(5, 7));
+
+var age = 30;
+
+module.exports = {
+  add, // add: add,
+  subtract,
+  age, // age: age
 }
-
-// console.log('Ergebnis:', add(5, 7));
-
-module.exports.age = 25;
-
 // console.log(module);
