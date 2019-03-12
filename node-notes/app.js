@@ -16,13 +16,21 @@ var argv = yargs.argv;
 console.log('Command:', command);
 
 if (command === 'add') {
-  console.log(`Adding new note: ${argv.title} -> ${argv.body}`);
+
+  notes.addNote(argv.title, argv.body);
+
 } else if (command === 'list') {
-  console.log('Listing all notes.');
+
+  notes.getAll();
+
 } else if (command === 'read') {
-  console.log('Reading note.');
+
+  notes.getNote(argv.title);
+
 } else if (command === 'remove') {
-  console.log('Removing note.');
+
+  notes.removeNote(argv.title);
+
 } else {
   console.error('Command not recognized.');
 }

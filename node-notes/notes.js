@@ -1,22 +1,24 @@
 console.log('Starting notes.js');
 
-var name = "Franzi";
-var adresse = {
-  plz: 1190,
-  ort: "Wien"
-};
+var addNote = (title, body) => {
+  console.log(`Adding note: ${title} --> ${body}`);
+}
 
-var add = (x, y) => x + y;
-var subtract = (x, y) => x - y;
+var getAll = () => {
+  console.log(`Getting all notes.`);
+}
 
+var getNote = function(title) {
+  console.log(`Getting note: ${title}`);
+}
 
-// console.log('Ergebnis:', add(5, 7));
-
-var age = 30;
+var removeNote = function removeXXX(title) {
+  console.log(`Removing note: ${title}`);
+}
 
 module.exports = {
-  add, // add: add,
-  subtract,
-  age, // age: age
+  addNote,
+  getAll,
+  getNote,
+  removeNote
 }
-// console.log(module);
