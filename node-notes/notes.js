@@ -10,7 +10,7 @@ var add = (x, y) => x + y;
 var subtract = (x, y) => x - y;
 
 
-console.log('Ergebnis:', add(5, 7));
+// console.log('Ergebnis:', add(5, 7));
 
 var age = 30;
 
