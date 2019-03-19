@@ -1,5 +1,3 @@
-console.log('Starting app.js');
-
 const notes = require('./notes');
 
 const yargs = require('yargs');
@@ -12,8 +10,6 @@ const yargs = require('yargs');
 
 var command = process.argv[2];
 var argv = yargs.argv;
-
-console.log('Command:', command);
 
 if (command === 'add') {
 

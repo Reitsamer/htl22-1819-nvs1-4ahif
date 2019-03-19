@@ -1,5 +1,3 @@
-console.log('Starting notes.js');
-
 const fs = require('fs');
 
 const db = 'notes-data.json';
@@ -17,6 +15,13 @@ var addNote = (title, body) => {
   var newNote = {
     title: title,
     body: body
+  }
+
+  var duplicateNotes = notes.filter((note) => note.title === title);
+
+  if (duplicateNotes.length > 0) {
+    console.error(`Note with title ${title} already exists.`);
+    return;
   }
 
   notes.push(newNote);
