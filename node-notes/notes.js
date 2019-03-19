@@ -5,16 +5,24 @@ const fs = require('fs');
 const db = 'notes-data.json';
 
 var addNote = (title, body) => {
-  console.log(`Adding note: ${title} --> ${body}`);
+  var notes = [];
 
-  var data = {
-    title,
-    body
-  };
+  try {
+    // Read existing data
+    var notesAsString = fs.readFileSync(db);
+    notes = JSON.parse(notesAsString);
+  } catch {
+  }
+  // Add new note to existing data
+  var newNote = {
+    title: title,
+    body: body
+  }
 
-  var jsonData = JSON.stringify(data);
+  notes.push(newNote);
 
-  fs.writeFileSync(db, jsonData);
+  // Write (updated) data
+  fs.writeFileSync(db, JSON.stringify(notes));
 }
 
 var getAll = () => {
