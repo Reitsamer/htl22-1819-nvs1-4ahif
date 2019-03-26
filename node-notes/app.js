@@ -17,15 +17,31 @@ if (command === 'add') {
 
 } else if (command === 'list') {
 
-  notes.getAll();
+  var existingNotes = notes.getAll();
+
+  existingNotes.forEach(note => {
+    notes.logNote(note);
+  });
 
 } else if (command === 'read') {
 
-  notes.getNote(argv.title);
+  var foundNote = notes.getNote(argv.title);
+
+  if (foundNote !== undefined) {
+    console.log('Note found:');
+    notes.logNote(foundNote);
+  } else {
+    console.log(`Note with title '${argv.title}' not found`);
+  }
 
 } else if (command === 'remove') {
 
-  notes.removeNote(argv.title);
+  var flag = notes.removeNote(argv.title);
+  if (flag) {
+    console.log('Note removed.');
+  } else {
+    console.log('Note not found.');
+  }
 
 } else {
   console.error('Command not recognized.');

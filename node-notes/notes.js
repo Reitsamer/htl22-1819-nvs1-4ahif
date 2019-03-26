@@ -46,20 +46,33 @@ var addNote = (title, body) => {
 }
 
 var getAll = () => {
-  console.log(`Getting all notes.`);
+  return fetchNotes();
 }
 
-var getNote = function(title) {
-  console.log(`Getting note: ${title}`);
+var getNote = (title) => {
+  var notes = fetchNotes();
+
+  var foundNotes = notes.filter((note) => note.title === title);
+  return foundNotes[0];
 }
 
-var removeNote = function removeXXX(title) {
-  console.log(`Removing note: ${title}`);
+var removeNote = (title) => {
+  var notes = fetchNotes();
+
+  var remainingNotes = notes.filter(note => note.title !== title);
+
+  saveNotes(remainingNotes);
+  return notes.length !== remainingNotes.length;
+}
+
+var logNote = (note) => {
+  console.log(`Title: ${note.title}; Body: ${note.body}`);
 }
 
 module.exports = {
   addNote,
   getAll,
   getNote,
-  removeNote
+  removeNote,
+  logNote
 }
