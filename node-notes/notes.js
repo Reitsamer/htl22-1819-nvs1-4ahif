@@ -7,15 +7,25 @@ const db = 'notes-data.json';
 // 2. Extract code for loading notes -> fetchNotes() (returns array of notes)
 // 3. Extract code for saving notes -> saveNotes(notes)
 
-var addNote = (title, body) => {
-  var notes = [];
-
+// 2
+var fetchNotes = () => {
   try {
     // Read existing data
     var notesAsString = fs.readFileSync(db);
-    notes = JSON.parse(notesAsString);
+    return JSON.parse(notesAsString);
   } catch {
+    return [];
   }
+}
+
+// 3
+var saveNotes = (notes) => {
+  fs.writeFileSync(db, JSON.stringify(notes));
+}
+
+var addNote = (title, body) => {
+  var notes = fetchNotes();
+
   // Add new note to existing data
   var newNote = {
     title: title,
@@ -32,7 +42,7 @@ var addNote = (title, body) => {
   notes.push(newNote);
 
   // Write (updated) data
-  fs.writeFileSync(db, JSON.stringify(notes));
+  saveNotes(notes);
 }
 
 var getAll = () => {
