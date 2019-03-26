@@ -8,8 +8,30 @@ const yargs = require('yargs');
 // console.log('Yargs.argv:');
 // console.log(yargs.argv);
 
+const titleOptions = {
+  describe: 'The title of the note.',
+  demand: true,
+  alias: 't'
+};
+
 var command = process.argv[2];
-var argv = yargs.argv;
+var argv = yargs
+  .command('add', 'Adds a note to our database.', {
+    title: titleOptions,
+    body: {
+      describe: 'The body of the note.',
+      demand: true,
+      alias: 'b'
+    }
+  })
+  .command('list', 'Lists all notes in database.')
+  .command('read', 'Reads the note with the given title', {
+    title: titleOptions
+  })
+  .command('remove', 'Removes the note with the given title', {
+    title: titleOptions
+  })
+  .argv;
 
 if (command === 'add') {
 
