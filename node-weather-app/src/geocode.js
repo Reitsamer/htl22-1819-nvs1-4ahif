@@ -27,3 +27,7 @@ const geocode = (location, callback) => {
         })
     })
 }
+
+module.exports = {
+    geocode
+}
