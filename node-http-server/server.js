@@ -1,17 +1,13 @@
-const http = require('http')
+const express = require('./expressMyself')
 
-const httpUtils = require('./http-utils')
+const app = express()
 
-const server = http.createServer()
+app.get('/HelloWorld', (request, response) => {
 
-server.on('request', (request, response) => {
-    console.log('Url:', request.url)
-    console.log('Method:', request.method)
-
-    httpUtils.handleStaticRequest(request, response)
 })
 
-server.listen(8080, () => {
-    console.log('Server running on port 8080.')
+app.get('/ServerTime', (request, response) => {
+    
 })
 
+app.start()
