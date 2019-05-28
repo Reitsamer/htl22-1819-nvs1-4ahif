@@ -18,12 +18,12 @@ const create = () => {
         }) 
     }
 
-    const get = () => {
-
+    const get = (url, eventHandler) => {
+        // TODO: register
     }
 
-    const post = () => {
-
+    const post = (url, eventHandler) => {
+        // TODO: register
     }
 
     return {
